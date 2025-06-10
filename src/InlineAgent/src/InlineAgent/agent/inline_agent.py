@@ -31,6 +31,12 @@ from InlineAgent.types import (
 
 import requests
 
+def get_default_profile():
+    """
+    Get the default AWS profile from environment variable or default to 'default'.
+    """
+    return os.getenv("AWS_PROFILE", "default")
+
 @dataclass
 class InlineAgent:
     foundation_model: str
@@ -48,7 +54,7 @@ class InlineAgent:
     knowledge_bases: List[KnowledgeBasePlugin] = field(default_factory=list)
     prompt_override_configuration: Dict = field(default_factory=dict)
 
-    profile: str = field(default="default")
+    profile: str = field(default_factory=get_default_profile)
     user_input: bool = False
     tool_map: Dict[str, Callable] = None
 

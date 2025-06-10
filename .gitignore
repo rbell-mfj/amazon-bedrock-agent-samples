@@ -4,6 +4,7 @@
 .env_runtime
 .ipynb_checkpoints
 .vscode
+.idea
 __pycache__
 .DS_Store
 .venv
